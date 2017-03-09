@@ -7,13 +7,11 @@
         "files": {
             "res/xml/config.xml": {
                 "parents": {
-                    "/widget": [
-                        {
-                            "xml": "<feature name=\"PushbotsPlugin\"><param name=\"android-package\" value=\"com.pushbots.plugin.PushbotsPlugin\" /></feature>",
-                            "count": 1
-                        }
-                    ],
                     "/*": [
+                        {
+                            "xml": "<feature name=\"FirebasePlugin\"><param name=\"android-package\" value=\"org.apache.cordova.firebase.FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
@@ -21,9 +19,23 @@
                     ]
                 }
             },
+            "res/values/strings.xml": {
+                "parents": {
+                    "/resources": [
+                        {
+                            "xml": "<string name=\"google_app_id\">@string/google_app_id</string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string name=\"google_api_key\">@string/google_api_key</string>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
             "AndroidManifest.xml": {
                 "parents": {
-                    "/manifest": [
+                    "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
                             "count": 1
@@ -33,47 +45,21 @@
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<permission android:name=\"com.example.hello.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.example.hello.permission.C2D_MESSAGE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
                             "count": 1
                         }
                     ],
                     "/manifest/application": [
                         {
-                            "xml": "<receiver android:name=\"com.pushbots.google.gcm.GCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"com.example.hello\" /></intent-filter></receiver>",
+                            "xml": "<service android:name=\"org.apache.cordova.firebase.FirebasePluginMessagingService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
                             "count": 1
                         },
                         {
-                            "xml": "<receiver android:name=\"com.pushbots.plugin.PushHandler\" />",
+                            "xml": "<service android:name=\"org.apache.cordova.firebase.FirebasePluginInstanceIDService\"><intent-filter><action android:name=\"com.google.firebase.INSTANCE_ID_EVENT\" /></intent-filter></service>",
                             "count": 1
                         },
                         {
-                            "xml": "<receiver android:name=\"com.pushbots.push.DefaultPushHandler\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:name=\"com.pushbots.push.GCMIntentService\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/*/application/activity": [
-                        {
-                            "xml": "<intent-filter><action android:name=\"com.example.hello.MESSAGE\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter>",
+                            "xml": "<receiver android:name=\"org.apache.cordova.firebase.OnNotificationOpenReceiver\" />",
                             "count": 1
                         }
                     ]
@@ -82,36 +68,26 @@
         }
     },
     "installed_plugins": {
-        "pushbots-cordova-plugin": {
-            "PACKAGE_NAME": "com.example.hello"
-        },
-        "cordova-plugin-android-support-v4": {
-            "PACKAGE_NAME": "com.example.hello"
+        "cordova-plugin-firebase": {
+            "PACKAGE_NAME": "com.simplepush.app"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.example.hello"
+            "PACKAGE_NAME": "com.simplepush.app"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "file": "plugins/pushbots-cordova-plugin/www/pushbots.js",
-            "id": "pushbots-cordova-plugin.PushbotsPlugin",
-            "pluginId": "pushbots-cordova-plugin",
+            "id": "cordova-plugin-firebase.FirebasePlugin",
+            "file": "plugins/cordova-plugin-firebase/www/firebase.js",
+            "pluginId": "cordova-plugin-firebase",
             "clobbers": [
-                "PushbotsPlugin"
+                "FirebasePlugin"
             ]
-        },
-        {
-            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-            "id": "cordova-plugin-whitelist.whitelist",
-            "pluginId": "cordova-plugin-whitelist",
-            "runs": true
         }
     ],
     "plugin_metadata": {
-        "pushbots-cordova-plugin": "1.3.0",
-        "cordova-plugin-android-support-v4": "21.0.1",
-        "cordova-plugin-whitelist": "1.2.1"
+        "cordova-plugin-firebase": "0.1.19",
+        "cordova-plugin-whitelist": "1.3.2"
     }
 }
