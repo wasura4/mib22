@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "770892332843",
+    "firebase_url": "https://simple-push-cordova-6ea73.firebaseio.com",
+    "project_id": "simple-push-cordova-6ea73",
+    "storage_bucket": "simple-push-cordova-6ea73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770892332843:android:77b3fa701e4f833c",
+        "android_client_info": {
+          "package_name": "com.simplepush.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770892332843-egkv399s77boanjf4dhbn00d7p21d6g8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpFWVVi8c8KdO9mf47yBwNhz552Bn6B4I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
